@@ -13,11 +13,12 @@
 
             $("#pet_feels").click(function(e){
 
-                $("#pet_likes").slideDown(e)
-                   // alert("I'm click")
+                $("#pet_likes").slideDown(200);  
 
-                $("#pet_eats").slideDown(e)
-                   // alert("I'm click")
+            });
+            $("#pet_likes").click(function(e){
+
+                $("#pet_eats").slideDown(200);  
 
             });
 
@@ -26,18 +27,27 @@
              let feels = $("input[name=feels]:checked").val();
              let likes = $("input[name=likes]:checked").val();
              let eats = $("input[name=eats]:checked").val();
+             let pet = "velociraptor";
 
              if(feels=="fluffy" && likes=="petted" && eats=="carrots" ){
-                 alert("what's up doc?");
+                pets = "rabit";
+
+             }
+
+             if(feels=="scaly" && likes=="ridden" && eats=="pets" ){
+                pets = "velociraptor";
 
              }
 
              let output = "";
+             output += `<p>My pet is a: ${pet}</p>`;
              output += `<p>My pet feels: ${feels}</p>`;
              output += `<p>My pet likes to be: ${likes}</p>`;
              output += `<p>My pet likes to eat: ${eats}</p>`;
 
              $("#output").html(output);
+
+             $('#pet').load(`includes/content.html #${pet}`);
 
              //alert (eats);
 
@@ -54,23 +64,24 @@
    <div id="pet_feels">
        <h3>Feels</h3>
        <p>Please choose how you would like your pet to feel:</p>
-       <input type="radio" name="feels" value="fluffy">fluffy <br />
+       <input type="radio" name="feels" value="fluffy" required="required">fluffy <br />
        <input type="radio" name="feels" value="scaly">scaly <br />
    </div>
    <div id="pet_likes">
        <h3>Likes</h3>
        <p>Please tell us what your pet will like:</p>
-       <input type="radio" name="likes" value="petted">to be petted <br />
+       <input type="radio" name="likes" value="petted" required="required">to be petted <br />
        <input type="radio" name="likes" value="ridden">to be ridden <br />
    </div>
        <div id="pet_eats">
        <h3>Eats</h3>
        <p>Please tell us what your pet likes to eat:</p>
-       <input type="radio" name="eats" value="carrots">carrots <br />
+       <input type="radio" name="eats" value="carrots" required="required">carrots <br />
        <input type="radio" name="eats" value="pets">other people's pets <br />
    </div>
   
    <input type="submit" value="submit it!" />
+   <div id="output">Pet pic goes here!</div>
    <div id="output">Output goes here!</div>
 </form>
 </body>
